@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPACE BATTLE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="load()">
+    <div class="container">
+        <div class="title">
+            <p>SPACE BATTLE</p>
+        </div>
+        <div class="main">
+            <div class="ussspaceship">
+                <img src="giphy.gif" alt="USS SSPACESHIP"/>
+            </div>
+            <div class="alienship">
+                <img src="aliengify.gif" alt="USS SSPACESHIP"/>
+            </div>
+        </div>
+
+        <div class="endsection">
+            <div class="usspoints">
+                <label> HULL </label><label id="usshull"></label>
+                <label> FIREPOWER </label><label id="ussfp"></label>
+                <label> ACCURACY </label><label id="ussacc"></label>
+            </div>
+            <div class="buttons">
+                <button class="attackbtn" onclick="startshoot()">ATTACK</button>
+                <button class="Retreatbtn" onclick="retreat()">RETREAT</button>
+                <button class="Restartbtn" onclick="Reload()">RELOAD</button>
+            </div>
+            <div class="alienpoints">
+                <label> HULL </label><label id="alienhull"></label>
+                <label> FIREPOWER </label><label id="alienfp"></label>
+                <label> ACCURACY </label><label id="alienacc"></label>
+            </div>
+        </div>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>
