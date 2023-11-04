@@ -60,6 +60,7 @@ class Ship {
         document.getElementById("alienhull").textContent = alienship.hull;
         document.getElementById("usshull").textContent = hullcnt;
         //console.log("Alien Hull:", alienship.hull);
+        textcont = textcont + "\n\n\n You shot the Alien"
       } else {
         this.hull -= alienship.firepower;
         hullcnt = this.hull;
@@ -70,27 +71,29 @@ class Ship {
       if (alienship.hull <= 0) {
         document.getElementById("usshull").textContent = hullcnt;
         document.getElementById("alienhull").textContent = alienship.hull;
-        alert("ALIEN'S HULL IS OVER, YOU WON THIS ROUND");
+        textcont = textcont + "\n\n ALIEN'S HULL IS OVER,\n\n YOU WON THIS ROUND";
         return;
       } else if (this.hull <= 0) {
         document.getElementById("usshull").textContent = hullcnt;
         document.getElementById("alienhull").textContent = alienship.hull;
-        alert("YOU GOT HIT AND YOUR HULL IS OVER");
+        textcont = textcont + " \n\n YOU GOT HIT \n\n\n YOUR HULL IS OVER";
         return;
       } else {
         console.log("Going with the same alien");
 
         if (
           confirm(
-            "YOU GOT HIT, BUT ALIEN STILL SURVIVE. DO YOU WANT TO HIT AGAIN?"
+            "YOU GOT HIT WITH HULL "+ this.hull +" left, BUT ALIEN STILL SURVIVE. DO YOU WANT TO HIT AGAIN?"
           ) == true
         ) {
           document.getElementById("usshull").textContent = hullcnt;
           document.getElementById("alienhull").textContent = alienship.hull;
+          textcont = textcont + " \n\n YOU GOT HIT ";
           this.attack(alienship);
         } else {
-          hullcnt = 0;
-          alert("YOU LOST");
+          //hullcnt = 0;
+          retreat();
+          //alert("YOU LOST");
         }
       }
     }
@@ -118,9 +121,23 @@ function retreat() {
     attackbtn.remove();
     retreatbutton.remove();
   }
+  else{
+    return;
+  }
+}
+
+function togglebg(type){
+  console.log(type);
+  document.querySelector('body').classList.toggle(type)
+}
+
+function togglebgold(){
+  document.querySelector('body').classList.toggle('space-back')
 }
 
 // attackbtn.addEventListener("click", startshoot());
+let textcont;
+const textvalue = document.getElementById("information");
 
 function load() {
   document.getElementById("usshull").textContent = "20";
@@ -134,7 +151,11 @@ function Reload() {
 
 function startshoot() {
   roundcnt++;
-  alert("ATTACK WITH ALIEN " + roundcnt);
+  textcont = "ATTACKED ALIEN "+roundcnt;
+  const alienimageclass = document.querySelector(".alienimage");
+  console.log(alienimageclass)
+  alienimageclass.classList.toggle("alienimage2");
+  //document.querySelector(".information").textContent = textcont;
   if (roundcnt === 1) hullcnt = 20;
   if (roundcnt <= 6) {
     const ussShip = new Ship(hullcnt, 5, 0.7);
@@ -152,15 +173,24 @@ function startshoot() {
 
     ussShip.attack(alienship);
 
+    console.log("Final Text Content: ",textcont);
+    
+    
     if (hullcnt <= 0) {
       alert("GAME OVER");
+      textvalue.textContent = textcont;
       attackbtn.remove();
       retreatbutton.remove();
     } else {
-      alert(`You won with ${hullcnt} lives`);
+      //alert(`You won with ${hullcnt} lives`);
+      togglebg("confetti-back");
+      setTimeout(togglebgold,3000);
+      textvalue.textContent = textcont;
+      console.log(textvalue)
     }
   } else {
     alert("GAME OVER");
+    textvalue.textContent = textcont;
     attackbtn.remove();
     retreatbutton.remove();
   }

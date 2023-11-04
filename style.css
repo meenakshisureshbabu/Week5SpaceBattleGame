@@ -3,6 +3,41 @@ body{
     background-size: cover;
 }
 
+.confetti-back{
+    background-color: black;
+    background-image: url("confetti.gif");
+    background-size: cover;
+}
+
+.alienimage2{
+    src: "alien2.gif";
+}
+.alienimage2{
+    src: "alien3.gif";
+}
+
+.space-back{
+    background-image: url("spacee-scaled.jpg") ;
+    background-size: cover;
+}
+
+.infotext{
+    border: solid red;
+    width: 250px;
+    height: 250px;
+    background-color: black;
+    color: white;
+}
+
+#information{
+    border: solid blue;
+    width: 250px;
+    height: 250px;
+    white-space: pre;
+    font-size: 12px;
+    text-align: center;
+}
+
 .main{
     display: flex;
     justify-content: space-around;
