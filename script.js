@@ -151,13 +151,13 @@ function Reload() {
 
 function startshoot() {
   roundcnt++;
-  textcont = "ATTACKED ALIEN "+roundcnt;
   const alienimageclass = document.querySelector(".alienimage");
   console.log(alienimageclass)
   alienimageclass.classList.toggle("alienimage2");
   //document.querySelector(".information").textContent = textcont;
   if (roundcnt === 1) hullcnt = 20;
   if (roundcnt <= 6) {
+    textcont = "ATTACKED ALIEN "+roundcnt;
     const ussShip = new Ship(hullcnt, 5, 0.7);
     console.log(ussShip);
 
@@ -181,6 +181,13 @@ function startshoot() {
       textvalue.textContent = textcont;
       attackbtn.remove();
       retreatbutton.remove();
+    }
+    else if(alienship.hull <= 0 && hullcnt > 0){
+      togglebg("confetti-back");
+      setTimeout(togglebgold,3000);
+      textvalue.textContent = textcont;
+      console.log(textvalue)
+
     } else {
       //alert(`You won with ${hullcnt} lives`);
       togglebg("confetti-back");
