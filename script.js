@@ -143,6 +143,10 @@ function load() {
   document.getElementById("usshull").textContent = "20";
   document.getElementById("ussfp").textContent = "5";
   document.getElementById("ussacc").textContent = "0.7";
+  document.getElementById("alienhull").textContent = "0";
+  document.getElementById("alienfp").textContent = "0";
+  document.getElementById("alienacc").textContent = "0.0";
+
 }
 
 function Reload() {
